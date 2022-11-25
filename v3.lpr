@@ -177,7 +177,7 @@ procedure drawcheck();
               begin
                 if (GameSpace[a,b]='X') or (GameSpace[a,b]='0') then
                   begin
-                    allspace:=true;
+                    draw:=true;
                   end
                 else
                   begin
@@ -188,7 +188,7 @@ procedure drawcheck();
       end;
     if (allspace=true) and (Winner=false) then
       begin
-        draw:=true
+        draw:=true;
       end;
   end;
 
@@ -215,7 +215,7 @@ begin
       p2wcheck();
       p1wcheck();
       drawcheck();
-  until (winner=true) or (Draw=true);
+  until (winner=true) or (draw=true);
   if (winner=true) and (p1w=true) then
     begin
       writeln('Player 1 was won');
@@ -224,7 +224,7 @@ begin
   begin
     writeln('Player 2 has won');
   end
-  else if (draw=true) then
+  else if (draw=true) and (winner=false) then
   begin
     writeln('It is a draw');
   end;
