@@ -3,8 +3,21 @@ program v3;
 var 
   GameSpace:array[1..3,1..3] of string;
   SF:array[1..3,1..3] of boolean;
-  p1w,p2w,draw,pl1,pl2,winner,allspace:boolean;
-  a,b,i,j,row1,row2,col1,col2:integer;
+  p1w,p2w,draw,pl1,pl2,winner:boolean;
+  a,b,row1,row2,col1,col2:integer;
+
+{
+  GameSpace is the play area that you see
+  SF is to check if a Space is Filled
+  p1w - player 1 wins
+  p2w - player 2 wins
+  pl1 - checks if player 1's turn has ended
+  pl2 - checks if player 2's turn has ended
+  winner - checks if there is a winner overall
+  a and b are used in if statements
+  row1 and col1 are player 1's chosen row and column
+  row2 and col2 are player 2's chosen row and column
+}
 
 {
   Player 1's turn procedure
@@ -207,11 +220,9 @@ begin
       writeln;
       p1t();
       p1wcheck();
-      p2wcheck();
       drawcheck();
       p2t();
       p2wcheck();
-      p1wcheck();
       drawcheck();
   until (winner=true) or (draw=true);
   if (winner=true) and (p1w=true) then
