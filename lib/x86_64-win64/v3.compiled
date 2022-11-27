@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <Compiler Value="C:\lazarus\fpc\3.2.2\bin\x86_64-win64\fpc.exe" Date="1420789896"/>
-  <Params Value=" -MObjFPC -Scghi -O1 -gw3 -gl -l -vewnhibq -FiC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\lib\x86_64-win64 -FuC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\ -FUC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\lib\x86_64-win64\ -FEC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\ -oC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\v3.exe v3.lpr"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -gw3 -gl -l -vewnhibq -FiC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\lib\x86_64-win64 -FuC:\Users\light\Desktop -FuC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\ -FUC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\lib\x86_64-win64\ -FEC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\ -oC:\Users\light\Desktop\desktop\mrsajadah\Nandc\V3\v3.exe v3.lpr"/>
 </CONFIG>

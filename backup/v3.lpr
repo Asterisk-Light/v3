@@ -1,5 +1,7 @@
 program v3;
 
+uses unit1;
+
 var 
   GameSpace:array[1..3,1..3] of string;
   SF:array[1..3,1..3] of boolean;
@@ -218,7 +220,6 @@ begin
   repeat 
       writeln;
       writeln;
-      writeln('you will have to wait until after player 2s tuen for the game to end');
       p1t();
       p1wcheck();
       drawcheck();
