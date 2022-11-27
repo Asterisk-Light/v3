@@ -2,6 +2,7 @@ program v3;
 
 var 
   GameSpace:array[1..3,1..3] of string;
+  SF:array[1..3,1..3] of boolean;
   p1w,p2w,draw,pl1,pl2,winner,allspace:boolean;
   a,b,i,j,row1,row2,col1,col2:integer;
 
@@ -26,6 +27,7 @@ procedure p1t();
     else
     begin
       GameSpace[row1,col1]:='X';
+      SF[row1,col1]:=true;
       writeln(' ',GameSpace[1,1],' ','|',' ',GameSpace[1,2],' ','|',' ',GameSpace[1,3]);
       writeln('-----------');
       writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
@@ -38,7 +40,6 @@ procedure p1t();
 {
   player 2's turn procedure
 }
-
 
 procedure p2t();
   begin
@@ -58,6 +59,7 @@ procedure p2t();
     else
     begin
       GameSpace[row2,col2]:='0';
+      SF[row2,col2]:=true;
       writeln(' ',GameSpace[1,1],' ','|',' ',GameSpace[1,2],' ','|',' ',GameSpace[1,3]);
       writeln('-----------');
       writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
@@ -169,13 +171,13 @@ procedure p2wcheck();
 
 procedure drawcheck();
   begin
-    if p1w=false and draw=false and p2w=false and winner=false then
+    if winner=false then
       begin
         for a := 1 to 3 do
           begin
             for b:=1 to 3 do
               begin
-                if (GameSpace[a,b]='X') or (GameSpace[a,b]='0') then
+                if (SF[1,1]=true) and (SF[1,2]=true) and (SF[1,3]=true) and (SF[2,1]=true) and (SF[2,2]=true) and (SF[2,3]=true) and (SF[3,1]=true) and (SF[3,2]=true) and (SF[3,3]=true) then
                   begin
                     draw:=true;
                   end
@@ -186,17 +188,13 @@ procedure drawcheck();
               end;
           end;
       end;
-    if (allspace=true) and (Winner=false) then
-      begin
-        draw:=true;
-      end;
   end;
 
 {
   Main Code
 }
 begin
-  writeln('gmae has started');
+  writeln('game has started');
   writeln;
   writeln;
   writeln(' ',GameSpace[1,1],' ','|',' ',GameSpace[1,2],' ','|',' ',GameSpace[1,3]);
