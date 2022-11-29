@@ -1,7 +1,5 @@
 program v3;
 
-uses unit1;
-
 var 
   GameSpace:array[1..3,1..3] of string;
   SF:array[1..3,1..3] of boolean;
@@ -217,16 +215,18 @@ begin
   writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
   writeln('-----------');
   writeln(' ',GameSpace[3,1],' ','|',' ',GameSpace[3,2],' ','|',' ',GameSpace[3,3]);
-  repeat 
+  while winner=false or draw= false do
+    begin
       writeln;
       writeln;
+      writeln('you will have to wait until after player 2s tuen for the game to end');
       p1t();
       p1wcheck();
       drawcheck();
       p2t();
       p2wcheck();
       drawcheck();
-  until (winner=true) or (draw=true);
+    end;
   if (winner=true) and (p1w=true) then
     begin
       writeln('Player 1 was won');

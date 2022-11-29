@@ -218,7 +218,7 @@ begin
   repeat 
       writeln;
       writeln;
-      writeln('you will have to wait until after player 2s tuen for the game to end');
+      writeln('you will have to wait until after player 2s turn for the game to end');
       p1t();
       p1wcheck();
       drawcheck();
