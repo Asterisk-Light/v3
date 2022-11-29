@@ -9,8 +9,8 @@
         <Filename Value="v3.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="73"/>
-        <CursorPos X="35" Y="89"/>
+        <TopLine Value="215"/>
+        <CursorPos X="7" Y="231"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit>
@@ -23,7 +23,7 @@
         <UsageCount Value="20"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="15">
+    <JumpHistory HistoryIndex="16">
       <Position>
         <Filename Value="v3.lpr"/>
       </Position>
@@ -85,7 +85,11 @@
       </Position>
       <Position>
         <Filename Value="v3.lpr"/>
-        <Caret Line="89" Column="29" TopLine="73"/>
+        <Caret Line="89" Column="35" TopLine="73"/>
+      </Position>
+      <Position>
+        <Filename Value="v3.lpr"/>
+        <Caret Line="94" Column="114" TopLine="73"/>
       </Position>
     </JumpHistory>
     <RunParams>

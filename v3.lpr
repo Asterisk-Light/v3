@@ -1,5 +1,8 @@
 program v3;
 
+uses
+  crt;
+
 var 
   GameSpace:array[1..3,1..3] of string;
   SF:array[1..3,1..3] of boolean;
@@ -228,18 +231,21 @@ begin
   until (winner=true) or (draw=true);
   if (winner=true) and (p1w=true) then
     begin
+      Clrscr;
       writeln;
       writeln;
       writeln('Player 1 was won');
     end
   else if (winner=true) and (p2w=true) then
   begin
+    Clrscr;
     writeln;
     writeln;
     writeln('Player 2 has won');
   end
   else if (draw=true) and (winner=false) then
   begin
+    Clrscr;
     writeln;
     writeln;
     writeln('It is a draw');
