@@ -274,6 +274,9 @@ begin
           SF[a,b]:=false;
         end;
     end;
+{
+  One Remacth will occur if rematch is requested
+}
   winner:=false;
   p1w:=false;
   p2w:=false;
