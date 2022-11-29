@@ -234,21 +234,21 @@ begin
       Clrscr;
       writeln;
       writeln;
-      writeln('Player 1 was won');
+      writeln('    Player 1 was won');
     end
   else if (winner=true) and (p2w=true) then
   begin
     Clrscr;
     writeln;
     writeln;
-    writeln('Player 2 has won');
+    writeln('    Player 2 has won');
   end
   else if (draw=true) and (winner=false) then
   begin
     Clrscr;
     writeln;
     writeln;
-    writeln('It is a draw');
+    writeln('    It is a draw');
   end;
   readln;
 
