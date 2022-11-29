@@ -1,10 +1,14 @@
 program v3;
 
+uses
+  crt;
+
 var 
   GameSpace:array[1..3,1..3] of string;
   SF:array[1..3,1..3] of boolean;
-  p1w,p2w,draw,pl1,pl2,winner:boolean;
+  p1w,p2w,draw,pl1,pl2,winner,re:boolean;
   a,b,row1,row2,col1,col2:integer;
+  reask:string;
 
 {
   GameSpace is the play area that you see`
@@ -89,45 +93,49 @@ procedure p2t();
 procedure p1wcheck();
   begin
     if (GameSpace[1,1]='X') and (GameSpace[1,2]='X') and (GameSpace[1,3]='X') then
-            begin 
-              winner:=true;
-              p1w:=true;
-            end
-          else if (GameSpace[2,1]='X') and (GameSpace[2,2]='X') and (GameSpace[2,3]='X') then 
-          begin
-            winner:=true;
-            p1w:=true;
-          end
-          else if (GameSpace[3,1]='X') and (GameSpace[3,2]='X') and (GameSpace[3,3]='X') then 
-          begin
-            winner:=true;
-            p1w:=true;
-          end
-         else if (GameSpace[1,1]='X') and (GameSpace[2,1]='X') and (GameSpace[3,1]='X') then 
-          begin
-            winner:=true;
-            p1w:=true;
-          end
-         else if (GameSpace[1,2]='X') and (GameSpace[2,2]='X') and (GameSpace[3,2]='X') then
-           begin
-            winner:=true;
-            p1w:=true;
-           end
-         else if (GameSpace[1,3]='X') and (GameSpace[2,3]='X') and (GameSpace[3,3]='X') then
-          begin
-            winner:=true;
-            p1w:=true;
-          end
-         else if (GameSpace[1,1]='X') and (GameSpace[2,2]='X') and (GameSpace[3,3]='X') then
-          begin
-            winner:=true;
-            p1w:=true;
-          end
-         else if (GameSpace[1,3]='X') and (GameSpace[2,2]='X') and (GameSpace[3,1]='X') then
-          begin
-            winner:=true;
-            p1w:=true;
-          end;
+      begin 
+        winner:=true;
+        p1w:=true;
+      end
+    else if (GameSpace[2,1]='X') and (GameSpace[2,2]='X') and (GameSpace[2,3]='X') then 
+      begin
+       winner:=true;
+       p1w:=true;
+      end
+    else if (GameSpace[3,1]='X') and (GameSpace[3,2]='X') and (GameSpace[3,3]='X') then 
+      begin
+        winner:=true;
+        p1w:=true;
+      end
+     else if (GameSpace[1,1]='X') and (GameSpace[2,1]='X') and (GameSpace[3,1]='X') then 
+      begin
+        winner:=true;
+        p1w:=true;
+      end
+     else if (GameSpace[1,2]='X') and (GameSpace[2,2]='X') and (GameSpace[3,2]='X') then
+       begin
+        winner:=true;
+        p1w:=true;
+       end
+     else if (GameSpace[1,3]='X') and (GameSpace[2,3]='X') and (GameSpace[3,3]='X') then
+      begin
+        winner:=true;
+        p1w:=true;
+      end
+     else if (GameSpace[1,1]='X') and (GameSpace[2,2]='X') and (GameSpace[3,3]='X') then
+      begin
+        winner:=true;
+        p1w:=true;
+      end
+     else if (GameSpace[1,3]='X') and (GameSpace[2,2]='X') and (GameSpace[3,1]='X') then
+      begin
+        winner:=true;
+        p1w:=true;
+      end;
+    if (p1w=true) then
+      begin
+        re:=false
+      end;
   end;
 
 {
@@ -207,6 +215,7 @@ procedure drawcheck();
   Main Code
 }
 begin
+  re:=true;
   writeln('game has started');
   writeln;
   writeln;
@@ -215,30 +224,79 @@ begin
   writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
   writeln('-----------');
   writeln(' ',GameSpace[3,1],' ','|',' ',GameSpace[3,2],' ','|',' ',GameSpace[3,3]);
-  while winner=false or draw= false do
+  while re=true do
     begin
-      writeln;
-      writeln;
-      writeln('you will have to wait until after player 2s tuen for the game to end');
-      p1t();
-      p1wcheck();
-      drawcheck();
-      p2t();
-      p2wcheck();
-      drawcheck();
+      repeat 
+        writeln;
+        writeln;
+        writeln('You will have to wait until after player 2s turn for the game to end');
+        p1t();
+        p1wcheck();
+        drawcheck();
+        p2t();
+        p2wcheck();
+        drawcheck();
+      until (winner=true) or (draw=true);
     end;
   if (winner=true) and (p1w=true) then
     begin
-      writeln('Player 1 was won');
+      Clrscr;
+      writeln;
+      writeln;
+      writeln('    Player 1 was won');
+      writeln;
+      writeln('    would you like to do  rematch?');
+      readln(reask);
+      case (reask) of
+        'yes','y':re:=true;
+        'no','n':re:=false;
+      end;
     end
   else if (winner=true) and (p2w=true) then
   begin
-    writeln('Player 2 has won');
+    Clrscr;
+    writeln;
+    writeln;
+    writeln('    Player 2 has won');
   end
   else if (draw=true) and (winner=false) then
   begin
-    writeln('It is a draw');
+    Clrscr;
+    writeln;
+    writeln;
+    writeln('    It is a draw');
   end;
+  for a:= 1 to 3 do
+    begin
+      for b:= 1 to 3 do
+        begin
+          GameSpace[a,b]:=' ';
+          SF[a,b]:=false;
+        end;
+    end;
+  
+  writeln('game has started');
+  writeln;
+  writeln;
+  writeln(' ',GameSpace[1,1],' ','|',' ',GameSpace[1,2],' ','|',' ',GameSpace[1,3]);
+  writeln('-----------');
+  writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
+  writeln('-----------');
+  writeln(' ',GameSpace[3,1],' ','|',' ',GameSpace[3,2],' ','|',' ',GameSpace[3,3]);
+  while re=true do
+    begin
+      repeat 
+        writeln;
+        writeln;
+        writeln('You will have to wait until after player 2s turn for the game to end');
+        p1t();
+        p1wcheck();
+        drawcheck();
+        p2t();
+        p2wcheck();
+        drawcheck();
+      until (winner=true) or (draw=true);
+    end;
   readln;
 
 end.
