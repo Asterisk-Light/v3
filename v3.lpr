@@ -218,7 +218,7 @@ begin
   repeat 
       writeln;
       writeln;
-      writeln('you will have to wait until after player 2s turn for the game to end');
+      writeln('You will have to wait until after player 2s turn for the game to end');
       p1t();
       p1wcheck();
       drawcheck();
@@ -228,14 +228,20 @@ begin
   until (winner=true) or (draw=true);
   if (winner=true) and (p1w=true) then
     begin
+      writeln;
+      writeln;
       writeln('Player 1 was won');
     end
   else if (winner=true) and (p2w=true) then
   begin
+    writeln;
+    writeln;
     writeln('Player 2 has won');
   end
   else if (draw=true) and (winner=false) then
   begin
+    writeln;
+    writeln;
     writeln('It is a draw');
   end;
   readln;
