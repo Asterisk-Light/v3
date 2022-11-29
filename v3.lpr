@@ -258,6 +258,13 @@ begin
     writeln;
     writeln;
     writeln('    Player 2 has won');
+    writeln;
+      writeln('    would you like to do  rematch?');
+      readln(reask);
+      case (reask) of
+        'yes','y':re:=true;
+        'no','n':re:=false;
+      end;
   end
   else if (draw=true) and (winner=false) then
   begin
@@ -265,6 +272,13 @@ begin
     writeln;
     writeln;
     writeln('    It is a draw');
+    writeln;
+      writeln('    would you like to do  rematch?');
+      readln(reask);
+      case (reask) of
+        'yes','y':re:=true;
+        'no','n':re:=false;
+      end;
   end;
   for a:= 1 to 3 do
     begin
@@ -276,7 +290,7 @@ begin
     end;
 {
   One Remacth will occur if rematch is requested
-}
+}Clrscr;
   winner:=false;
   p1w:=false;
   p2w:=false;
