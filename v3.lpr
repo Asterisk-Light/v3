@@ -217,16 +217,16 @@ procedure drawcheck();
 }
 
 procedure Game();
-begin
-  writeln('game has started');
-  writeln;
-  writeln;
-  writeln(' ',GameSpace[1,1],' ','|',' ',GameSpace[1,2],' ','|',' ',GameSpace[1,3]);
-  writeln('-----------');
-  writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
-  writeln('-----------');
-  writeln(' ',GameSpace[3,1],' ','|',' ',GameSpace[3,2],' ','|',' ',GameSpace[3,3]);
-  while (re=true) and (winner=false) and (draw=false) do
+  begin
+    writeln('game has started');
+    writeln;
+    writeln;
+   writeln(' ',GameSpace[1,1],' ','|',' ',GameSpace[1,2],' ','|',' ',GameSpace[1,3]);
+   writeln('-----------');
+   writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
+   writeln('-----------');
+   writeln(' ',GameSpace[3,1],' ','|',' ',GameSpace[3,2],' ','|',' ',GameSpace[3,3]);
+   while (re=true) and (winner=false) and (draw=false) do
     begin
       repeat 
         writeln;
@@ -240,66 +240,66 @@ begin
         drawcheck();
       until (p1w=true) or (p2w=true) or (draw=true);
     end;
-  if (winner=true) and (p1w=true) then
-    begin
-      Clrscr;
-      p1score:=p1score+1;
-      writeln;
-      writeln;
-      writeln('    Player 1 was won');
-      writeln;
-      writeln('    would you like to do  rematch?');
-      readln(reask);
-      case (reask) of
-        'yes','y':re:=true;
-        'no','n':re:=false;
-      end;
-    winner:=false;
-    p1w:=false;
-    end
-  else if (winner=true) and (p2w=true) then
-  begin
-    Clrscr;
-    p2score:=p2score+1;
-    writeln;
-    writeln;
-    writeln('    Player 2 has won');
-    writeln;
-    writeln('    would you like to do  rematch?');
-    readln(reask);
-    case (reask) of
-      'yes','y':re:=true;
-      'no','n':re:=false;
-    end;
-    winner:=false;
-    p2w:=false;
-  end
-  else if (draw=true) and (winner=false) then
-    begin
-      Clrscr;
-      writeln;
-      writeln;
-      writeln('    It is a draw');
-      writeln;
-      writeln('    would you like to do  rematch?');
-      readln(reask);
-      case (reask) of
-        'yes','y':re:=true;
-        'no','n':re:=false;
-      end;
-      draw:=false;
-    end;
-  for a:= 1 to 3 do
-    begin
-      for b:= 1 to 3 do
-        begin
-        Clrscr;
-          GameSpace[a,b]:=' ';
-          SF[a,b]:=false;
+    if (winner=true) and (p1w=true) then
+      begin
+       Clrscr;
+       p1score:=p1score+1;
+       writeln;
+       writeln;
+       writeln('    Player 1 was won');
+       writeln;
+       writeln('    would you like to do  rematch?');
+       readln(reask);
+       case (reask) of
+         'yes','y':re:=true;
+         'no','n':re:=false;
         end;
-    end;
-
-end;
+     winner:=false;
+     p1w:=false;
+     end
+    else if (winner=true) and (p2w=true) then
+    begin
+     Clrscr;
+      p2score:=p2score+1;
+     writeln;
+     writeln;
+     writeln('    Player 2 has won');
+     writeln;
+     writeln('    would you like to do  rematch?');
+     readln(reask);
+     case (reask) of
+       'yes','y':re:=true;
+       'no','n':re:=false;
+     end;
+     winner:=false;
+     p2w:=false;
+    end
+    else if (draw=true) and (winner=false) then
+      begin
+        Clrscr;
+        writeln;
+       writeln;
+       writeln('    It is a draw');
+        writeln;
+        writeln('    would you like to do  rematch?');
+       readln(reask);
+      case (reask) of
+         'yes','y':re:=true;
+         'no','n':re:=false;
+       end;
+        draw:=false;
+     end;
+   for a:= 1 to 3 do
+     begin
+        for b:= 1 to 3 do
+          begin
+          Clrscr;
+            GameSpace[a,b]:=' ';
+            SF[a,b]:=false;
+          end;
+      end;
+  
+  end;
 
 
 {
