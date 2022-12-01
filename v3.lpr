@@ -7,8 +7,9 @@ var
   GameSpace:array[1..3,1..3] of string;
   SF:array[1..3,1..3] of boolean;
   p1w,p2w,draw,pl1,pl2,winner,re:boolean;
-  a,b,row1,row2,col1,col2:integer;
-  reask:string;
+  a,b,row1,row2,col1,col2,p1score,p2score:integer;
+  reask,DataValue:string;
+  ScoreFile:text;
 
 {
   GameSpace is the play area that you see`
@@ -144,45 +145,45 @@ procedure p1wcheck();
 procedure p2wcheck();
   begin
     if (GameSpace[1,1]='0') and (GameSpace[1,2]='0') and (GameSpace[1,3]='0') then
-            begin 
-              winner:=true;
-              p2w:=true;
-            end
-          else if (GameSpace[2,1]='0') and (GameSpace[2,2]='0') and (GameSpace[2,3]='0') then 
-          begin
-            winner:=true;
-            p2w:=true;
-          end
-          else if (GameSpace[3,1]='0') and (GameSpace[3,2]='0') and (GameSpace[3,3]='0') then 
-          begin
-            winner:=true;
-            p2w:=true;
-          end
-         else if (GameSpace[1,1]='0') and (GameSpace[2,1]='0') and (GameSpace[3,1]='0') then 
-          begin
-            winner:=true;
-            p2w:=true;
-          end
-         else if (GameSpace[1,2]='0') and (GameSpace[2,2]='0') and (GameSpace[3,2]='0') then
-           begin
-            winner:=true;
-            p2w:=true;
-           end
-         else if (GameSpace[1,3]='0') and (GameSpace[2,3]='0') and (GameSpace[3,3]='0') then
-          begin
-            winner:=true;
-            p2w:=true;
-          end
-         else if (GameSpace[1,1]='0') and (GameSpace[2,2]='0') and (GameSpace[3,3]='0') then
-          begin
-            winner:=true;
-            p2w:=true;
-          end
-         else if (GameSpace[1,3]='0') and (GameSpace[2,2]='0') and (GameSpace[3,1]='0') then
-          begin
-            winner:=true;
-            p2w:=true;
-          end;
+        begin 
+          winner:=true;
+          p2w:=true;
+        end
+    else if (GameSpace[2,1]='0') and (GameSpace[2,2]='0') and (GameSpace[2,3]='0') then 
+      begin
+        winner:=true;
+        p2w:=true;
+      end
+    else if (GameSpace[3,1]='0') and (GameSpace[3,2]='0') and (GameSpace[3,3]='0') then 
+      begin
+       winner:=true;
+       p2w:=true;
+      end
+    else if (GameSpace[1,1]='0') and (GameSpace[2,1]='0') and (GameSpace[3,1]='0') then 
+      begin
+         winner:=true;
+         p2w:=true;
+      end
+    else if (GameSpace[1,2]='0') and (GameSpace[2,2]='0') and (GameSpace[3,2]='0') then
+       begin
+         winner:=true;
+         p2w:=true;
+      end
+   else if (GameSpace[1,3]='0') and (GameSpace[2,3]='0') and (GameSpace[3,3]='0') then
+      begin
+        winner:=true;
+        p2w:=true;
+      end
+   else if (GameSpace[1,1]='0') and (GameSpace[2,2]='0') and (GameSpace[3,3]='0') then
+      begin
+         winner:=true;
+         p2w:=true;
+      end
+   else if (GameSpace[1,3]='0') and (GameSpace[2,2]='0') and (GameSpace[3,1]='0') then
+      begin
+        winner:=true;
+        p2w:=true;
+      end;
   end;
 
 
@@ -212,10 +213,11 @@ procedure drawcheck();
   end;
 
 {
-  Main Code
+  Game
 }
+
+procedure Game();
 begin
-  re:=true;
   writeln('game has started');
   writeln;
   writeln;
@@ -224,7 +226,7 @@ begin
   writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
   writeln('-----------');
   writeln(' ',GameSpace[3,1],' ','|',' ',GameSpace[3,2],' ','|',' ',GameSpace[3,3]);
-  while re=true do
+  while (re=true) and (winner=false) and (draw=false) do
     begin
       repeat 
         writeln;
@@ -236,11 +238,12 @@ begin
         p2t();
         p2wcheck();
         drawcheck();
-      until (winner=true) or (draw=true);
+      until (p1w=true) or (p2w=true) or (draw=true);
     end;
   if (winner=true) and (p1w=true) then
     begin
       Clrscr;
+      p1score:=p1score+1;
       writeln;
       writeln;
       writeln('    Player 1 was won');
@@ -251,72 +254,86 @@ begin
         'yes','y':re:=true;
         'no','n':re:=false;
       end;
+    winner:=false;
+    p1w:=false;
     end
   else if (winner=true) and (p2w=true) then
   begin
     Clrscr;
+    p2score:=p2score+1;
     writeln;
     writeln;
     writeln('    Player 2 has won');
     writeln;
-      writeln('    would you like to do  rematch?');
-      readln(reask);
-      case (reask) of
-        'yes','y':re:=true;
-        'no','n':re:=false;
-      end;
+    writeln('    would you like to do  rematch?');
+    readln(reask);
+    case (reask) of
+      'yes','y':re:=true;
+      'no','n':re:=false;
+    end;
+    winner:=false;
+    p2w:=false;
   end
   else if (draw=true) and (winner=false) then
-  begin
-    Clrscr;
-    writeln;
-    writeln;
-    writeln('    It is a draw');
-    writeln;
+    begin
+      Clrscr;
+      writeln;
+      writeln;
+      writeln('    It is a draw');
+      writeln;
       writeln('    would you like to do  rematch?');
       readln(reask);
       case (reask) of
         'yes','y':re:=true;
         'no','n':re:=false;
       end;
-  end;
+      draw:=false;
+    end;
   for a:= 1 to 3 do
     begin
       for b:= 1 to 3 do
         begin
+        Clrscr;
           GameSpace[a,b]:=' ';
           SF[a,b]:=false;
         end;
     end;
+
+end;
+
+
 {
-  One Remacth will occur if rematch is requested
-}Clrscr;
-  winner:=false;
-  p1w:=false;
-  p2w:=false;
-  draw:=false;
-  writeln;
-  writeln;
-  writeln;
-  writeln(' ',GameSpace[1,1],' ','|',' ',GameSpace[1,2],' ','|',' ',GameSpace[1,3]);
-  writeln('-----------');
-  writeln(' ',GameSpace[2,1],' ','|',' ',GameSpace[2,2],' ','|',' ',GameSpace[2,3]);
-  writeln('-----------');
-  writeln(' ',GameSpace[3,1],' ','|',' ',GameSpace[3,2],' ','|',' ',GameSpace[3,3]);
+  Main Code
+}
+begin
+  p1score:=0;
+  p2score:=0;
+  re:=true;
   while re=true do
     begin
-      repeat 
-        writeln;
-        writeln;
-        writeln('You will have to wait until after player 2s turn for the game to end');
-        p1t();
-        p1wcheck();
-        drawcheck();
-        p2t();
-        p2wcheck();
-        drawcheck();
-      until (winner=true) or (draw=true);
+      winner:=false;
+      draw:=false;
+      Game();
+      p1wcheck();
+      p2wcheck();
+      drawcheck();
     end;
+
+  //Assigning Scores to a file
+  Assign(ScoreFile,'Scores.txt');
+  Rewrite(ScoreFile);
+  writeln(ScoreFile,'    Player 1s score:  ',p1score);
+  writeln(ScoreFile,'    Player 2s score:  ',p2score);
+  append(ScoreFile);
+  closefile(ScoreFile);
+
+  //Reading Scores from file and printing it into the cmd
+  reset(ScoreFile);
+  repeat
+    readln(ScoreFile,DataValue);
+    writeln(DataValue);
+  until Eof(ScoreFile);
+  closefile(ScoreFile);
   readln;
 
 end.

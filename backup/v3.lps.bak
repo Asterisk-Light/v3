@@ -9,9 +9,9 @@
         <Filename Value="v3.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="271"/>
-        <CursorPos X="116" Y="294"/>
-        <UsageCount Value="23"/>
+        <TopLine Value="260"/>
+        <CursorPos X="94" Y="282"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,10 +20,10 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="236"/>
         <CursorPos X="54" Y="249"/>
-        <UsageCount Value="21"/>
+        <UsageCount Value="23"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="23">
+    <JumpHistory HistoryIndex="28">
       <Position>
         <Filename Value="v3.lpr"/>
       </Position>
@@ -118,6 +118,26 @@
       <Position>
         <Filename Value="v3.lpr"/>
         <Caret Line="265" Column="87" TopLine="236"/>
+      </Position>
+      <Position>
+        <Filename Value="v3.lpr"/>
+        <Caret Line="278" Column="11" TopLine="275"/>
+      </Position>
+      <Position>
+        <Filename Value="v3.lpr"/>
+        <Caret Line="303" Column="12" TopLine="279"/>
+      </Position>
+      <Position>
+        <Filename Value="v3.lpr"/>
+        <Caret Line="290" Column="85" TopLine="280"/>
+      </Position>
+      <Position>
+        <Filename Value="v3.lpr"/>
+        <Caret Line="252" Column="27" TopLine="238"/>
+      </Position>
+      <Position>
+        <Filename Value="v3.lpr"/>
+        <Caret Line="307" Column="93" TopLine="281"/>
       </Position>
     </JumpHistory>
     <RunParams>
